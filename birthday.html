@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy birthday</title>
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Lato:300italic);
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #ee9ca7;
+        font-family: sans-serif;
+      }
+      #text {
+        color: #e3465b;
+        font-family: "Lato", sans-serif;
+        font-weight: 300;
+        font-style: italic;
+        text-align: center;
+        h1 {
+          font-size: 1.4em;
+        }
+      }
+
+      .cake-container {
+        position: relative;
+        width: 200px;
+        height: 150px;
+      }
+
+      /* Cake base */
+
+      .icing-layer {
+        position: relative;
+        background: #5e4841;
+        height: 10px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        width: 100%;
+        overflow: visible;
+      }
+
+      .icing-layer .drip {
+        position: absolute;
+        bottom: -10px;
+        width: 20px;
+        height: 20px;
+        background: #5e4841;
+        border-radius: 50%;
+      }
+
+      .icing-layer .drip:nth-child(1) {
+        left: 10%;
+      }
+      .icing-layer .drip:nth-child(2) {
+        left: 20%;
+      }
+      .icing-layer .drip:nth-child(3) {
+        left: 30%;
+      }
+      .icing-layer .drip:nth-child(4) {
+        left: 40%;
+      }
+      .icing-layer .drip:nth-child(5) {
+        left: 50%;
+      }
+      .icing-layer .drip:nth-child(6) {
+        left: 60%;
+      }
+      .icing-layer .drip:nth-child(7) {
+        left: 70%;
+      }
+      .icing-layer .drip:nth-child(8) {
+        left: 80%;
+      }
+      .icing-layer .drip:nth-child(9) {
+        left: 90%;
+      }
+      .icing-layer .drip:nth-child(10) {
+        left: 0%;
+      }
+      .icake {
+        width: 200px;
+        height: 25px;
+        background: #8b6a60;
+        border-radius: 0% 0% 10px 10px;
+        /* margin-top: -5px; */
+      }
+      .cake {
+        width: 200px;
+        height: 30px;
+        background: #8b6a60;
+        border-radius: 10px;
+        margin: 0 auto;
+      }
+      .cream {
+        width: 195px;
+        height: 10px;
+        background: #5e4841;
+        border-radius: 10px;
+        margin: 0 auto;
+      }
+      .base {
+        height: 5px;
+        width: 200px;
+        border-radius: 10px;
+        background: #fff;
+      }
+
+      /* Candle */
+      .candle {
+        position: absolute;
+        top: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 10px;
+        height: 50px;
+        background: #fff;
+        border-radius: 2px;
+        cursor: pointer;
+      }
+
+      /* Flame */
+      .flame {
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 10px;
+        height: 20px;
+        background: orange;
+        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        box-shadow: 0 0 40px 10px orangered;
+        animation: flicker 0.5s infinite;
+      }
+
+      /* Flicker animation */
+      @keyframes flicker {
+        0%,
+        100% {
+          opacity: 1;
+          transform: translateX(-50%) scale(1);
+        }
+        50% {
+          opacity: 0.7;
+          transform: translateX(-50%) scale(0.9);
+        }
+      }
+
+      /* Hidden flame style when extinguished */
+      .extinguished {
+        display: none;
+      }
+      h1 {
+        position: absolute;
+        bottom: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cake-container">
+      <div class="icing-layer">
+        <span class="drip"></span>
+        <span class="drip"></span>
+        <span class="drip"></span>
+        <span class="drip"></span>
+        <span class="drip"></span>
+        <span class="drip"></span>
+        <span class="drip"></span>
+        <span class="drip"></span>
+        <span class="drip"></span>
+        <span class="drip"></span>
+      </div>
+      <div class="icake"></div>
+      <div class="cream"></div>
+      <div class="cake"></div>
+      <div class="cream"></div>
+      <div class="cake"></div>
+      <div class="base"></div>
+      <div class="candle" id="candle">
+        <div class="flame" id="flame"></div>
+      </div>
+    </div>
+    <center></center>
+    <br /><br />
+    <h1 id="text">click on the flame to blow</h1>
+
+    <script>
+      const flame = document.getElementById("flame");
+      const text = document.getElementById("text");
+
+      flame.addEventListener("click", () => {
+        // Toggle the flame when clicked
+        flame.classList.toggle("extinguished");
+        text.textContent = "Yayy you're finally 18!!";
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y:0.6},
+        });
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+  </body>
+</html>

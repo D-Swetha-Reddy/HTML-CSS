@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>navigation bar practice</title>
+
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #1e1e1e;
+        color: aliceblue;
+      }
+      .nav-container {
+        margin: 40px;
+      }
+    </style>
+
+    <style>
+      .navbar {
+        background-color: #eaeaea;
+        padding: 10px;
+        color: #1e1e1e;
+      }
+      .navbar ul {
+        list-style-type: none;
+        padding: 0px;
+        margin: 0px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .navbar a {
+        text-decoration: none;
+        padding: 5px 15px;
+        margin: 0px;
+        display: block;
+        position: relative;
+        color: #1e1e1e;
+      }
+      .navbar a::after {
+        content: "";
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        left: 0px;
+        bottom: 0px;
+        background-color: blue;
+        transform: scaleX(0);
+        transition: transform 0.3s ease-in-out;
+      }
+      .navbar a:hover::after {
+        transform: scaleX(1);
+      }
+      .navbar .dropdown-content {
+        display: none;
+        transform: translateY(0);
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        width: 110px;
+        padding-top: 5px;
+        margin: -10px;
+      }
+      .navbar .dropdown {
+        position: relative;
+      }
+      .navbar .dropdown:hover .dropdown-content {
+        display: block;
+        position: absolute;
+        top: 40px;
+        background-color: none;
+        transform: translateY(0);
+      }
+      .navbar .dropdown-content a {
+        text-decoration: none;
+        color: #eaeaea;
+        transform: translateY(-15px);
+      }
+      .navbar .dropdown-content a:nth-child(1) {
+        margin-top: 20px;
+      }
+      .navbar .login-btn {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav-container">
+      <nav class="navbar">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li class="dropdown">
+            <a href="#">About</a>
+            <div class="dropdown-content">
+              <a href="#">Our story</a>
+              <a href="#">Team</a>
+              <a href="#">Contact us</a>
+            </div>
+          </li>
+          <li><a href="#">Products</a></li>
+          <button class="login-btn">Login</button>
+        </ul>
+      </nav>
+    </div>
+  </body>
+</html>
